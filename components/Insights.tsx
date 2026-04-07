@@ -96,8 +96,6 @@ export function Insights({
   const weekly = useMemo(() => buildWeeklyVolume(rows), [rows]);
   const maxWeekly = Math.max(1, ...weekly.map((w) => w.count));
 
-  if (!rows.length) return null;
-
   return (
     <section className="insights">
       <button
@@ -110,6 +108,9 @@ export function Insights({
 
       {open && (
         <>
+          {!rows.length && (
+            <p className="ins-empty">Log some weights and your trends will appear here.</p>
+          )}
           <div className="ins-section">
             <p className="ins-label">Weekly training days (last 8 weeks)</p>
             <div className="weekly-bars">
