@@ -1,0 +1,25 @@
+Vercel + Supabase
+
+1) Supabase
+   - Create a project at https://supabase.com
+   - Settings → API: copy Project URL and anon public key
+   - SQL Editor → paste and run everything in supabase/schema.sql
+   - Authentication → Providers: enable Email (default). Turn off "Confirm email" for solo testing if you like.
+
+2) Vercel
+   - https://vercel.com → Add New → Project → import this repo (or deploy from CLI)
+   - Environment variables (Project Settings → Environment Variables):
+       NEXT_PUBLIC_SUPABASE_URL
+       NEXT_PUBLIC_SUPABASE_ANON_KEY
+     Use the same values as in .env.example (real values from Supabase).
+   - Redeploy after adding env vars.
+
+3) Local dev
+   cp .env.example .env.local   # fill with real keys
+   npm install
+   npm run dev
+
+4) Analytics
+   - Vercel dashboard → your project → Analytics: enable (optional, works on Vercel deployment).
+
+Data: each signed-in user only sees their own rows (RLS on gym_entries). Logs are not in Vercel; they live in Supabase Postgres.

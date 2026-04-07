@@ -1,0 +1,9 @@
+{
+  "name": "Gym log",
+  "short_name": "Gym log",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0c0d10",
+  "theme_color": "#0c0d10",
+  "description": "Personal gym log with cloud sync"
+}
