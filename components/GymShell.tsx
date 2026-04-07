@@ -8,6 +8,7 @@ import { computeStats, daysWithData } from '@/lib/stats';
 import { WORKOUTS } from '@/lib/workouts';
 import { AuthPanel } from '@/components/AuthPanel';
 import { StatsBanner } from '@/components/StatsBanner';
+import { Insights } from '@/components/Insights';
 import { ExerciseFlip } from '@/components/ExerciseFlip';
 
 const LEGACY_KEY = 'gym-tracker-personal-v1';
@@ -238,15 +239,15 @@ export function GymShell() {
       <StatsBanner stats={stats} workouts={WORKOUTS} />
 
       <section className="controls-block">
-        <label className="field">
+        <div className="date-row">
           <span className="field-label">Training day</span>
           <input
-            className="input date-input"
+            className="date-picker"
             type="date"
             value={date}
             onChange={(e) => setDate(e.target.value)}
           />
-        </label>
+        </div>
 
         {pastDays.length ? (
           <div className="day-strip" aria-label="Recent logged days">
@@ -325,6 +326,8 @@ export function GymShell() {
           </li>
         ))}
       </ul>
+
+      <Insights rows={rows} workouts={WORKOUTS} />
 
       <div className="misc-actions">
         <button type="button" className="ghost-btn" onClick={() => void importLegacy()}>
