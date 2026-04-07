@@ -1,12 +1,6 @@
 import { createServerClient } from '@supabase/ssr';
 import { NextResponse, type NextRequest } from 'next/server';
-
-/** Supabase SSR passes this shape into `cookies.setAll`. */
-type CookieToSet = {
-  name: string;
-  value: string;
-  options?: Parameters<NextResponse['cookies']['set']>[2];
-};
+import type { CookieToSet } from '@/lib/supabase/types';
 
 export async function updateSession(request: NextRequest) {
   let supabaseResponse = NextResponse.next({
@@ -33,7 +27,7 @@ export async function updateSession(request: NextRequest) {
             request,
           });
           cookiesToSet.forEach(({ name, value, options }) =>
-            supabaseResponse.cookies.set(name, value, options),
+            supabaseResponse.cookies.set(name, value, options as never),
           );
         },
       },
