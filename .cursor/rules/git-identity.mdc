@@ -1,0 +1,8 @@
+---
+description: Git author must be georgioelias only for this project.
+alwaysApply: true
+---
+
+# Gym log — git identity
+
+All commits in this repo must use **georgioelias** / **georgioelias@users.noreply.github.com**. Never use Sola Sarkis or `solasarkis7@gmail.com`. Prefer inheriting **global** git `user.name` / `user.email` set for Georgio.
