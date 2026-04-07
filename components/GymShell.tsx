@@ -20,10 +20,12 @@ function todayISODate() {
   return `${y}-${m}-${day}`;
 }
 
-function formatDayChip(iso: string) {
+function formatDayChip(iso: string): { wd: string; md: string } {
   const d = new Date(iso + 'T12:00:00');
-  if (Number.isNaN(d.getTime())) return iso;
-  const wd = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'][d.getDay()];
+  if (Number.isNaN(d.getTime())) {
+    return { wd: '—', md: iso };
+  }
+  const wd = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'][d.getDay()] ?? '—';
   const md = `${d.getMonth() + 1}/${d.getDate()}`;
   return { wd, md };
 }
