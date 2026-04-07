@@ -38,7 +38,8 @@ export function GymShell() {
   const [syncBump, setSyncBump] = useState(0);
   const [date, setDate] = useState(todayISODate);
   const [workoutId, setWorkoutId] = useState(WORKOUTS[0].id);
-  const debouncers = useRef<Map<string, ReturnType<typeof setTimeout>>>(new Map());
+  /** Browser timers are numeric IDs; Node typings use Timeout — use number for client + `next build`. */
+  const debouncers = useRef<Map<string, number>>(new Map());
 
   useEffect(() => {
     let cancelled = false;
